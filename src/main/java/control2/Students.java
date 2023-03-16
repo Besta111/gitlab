@@ -1,8 +1,12 @@
 package control2;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
+@Data
 @Entity
 @Getter
 @Setter
@@ -10,16 +14,19 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Students {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(name = "name" ,nullable = false)
     private String name;
 
-    @Column(name = "surname" ,nullable = false)
     private String surname;
 
-    @Column(name = "id_teacher" ,nullable = false)
-    private String id_teacher;
+    @Builder.Default
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "students_teachers",
+            joinColumns =  @JoinColumn(name = "students_id"),
+            inverseJoinColumns= @JoinColumn(name = "teachers_id") )
+    private Set<Teachers> teachers = new HashSet<Teachers>();
 }
