@@ -29,4 +29,5 @@ public class Students {
             joinColumns =  @JoinColumn(name = "students_id"),
             inverseJoinColumns= @JoinColumn(name = "teachers_id") )
     private Set<Teachers> teachers = new HashSet<Teachers>();
+
 }

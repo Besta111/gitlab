@@ -43,8 +43,6 @@ public class TablesStedentsTeacher {
             session.getTransaction().commit();
             session.close();
 
-
-
         }
     }
 }

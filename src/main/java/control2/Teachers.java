@@ -27,6 +27,5 @@ public class Teachers {
     @Builder.Default
     @ManyToMany(mappedBy = "teachers")
     private Set<Students> students = new HashSet<Students>();
-
 }
 
